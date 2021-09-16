@@ -1,13 +1,4 @@
 import './styles/style.scss';
-import { main, div } from './modules/variables';
-import { makeField } from './modules/makeField';
-import { showTitle } from './modules/header';
+import { playGame } from './modules/game';
 
-
-
-showTitle();
-makeField();
-
-
-
-
+playGame();

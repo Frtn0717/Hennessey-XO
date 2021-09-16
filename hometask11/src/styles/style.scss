@@ -1,5 +1,12 @@
 $font-size: 1rem;
 $font-main: 'Roboto';
+$winner-color: rgb(135, 236, 88);
+$loser-color: rgb(236, 79, 113);
+$draw-color: rgb(233, 236, 79);
+$button-bg-color: rgba(213, 221, 213, 0.589);
+$button-bg-hover-color: rgba(58, 59, 58, 0.589);
+$button-hover-color: rgb(255, 255, 255);
+
 
 @font-face {
   font-family: 'Roboto';
@@ -23,52 +30,101 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  background-color: rgb(172, 211, 174);
   padding: 1% 1%;
-  font-family: 'Roboto';
+  font-family: $font-main;
   background-image: url('../public/assets/icons/tree-5348075_1920.jpg');
+
+  .root {
+    width: min(100%, 30rem);
+    height: 50rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  
+    .heading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 3rem;
+    }
+    
+    .wrapper {
+      width: min(100%, 21rem);
+      height: min(100%, 22rem);
+      background-color: rgb(70, 63, 77);
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0.5%;
+      margin-bottom: 1.5rem;
+      border: 2px solid black;
+      opacity: 0.7;
+    
+      .cell {
+        width: min(100%, 7rem);
+        height: 7rem;
+        font-size: 6rem;
+        background-color: rgb(191, 180, 206);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 33.33%;
+        padding: 1%;
+        border: 2px solid black;
+        opacity: 0.8;
+        
+        &:hover {
+          background-color: rgb(162, 154, 173);
+        }
+      }
+
+    }
+
+    .winner {
+      background-color: $winner-color;
+    }
+
+    .loser {
+      background-color: $loser-color;
+    }
+
+    .draw {
+      background-color: $draw-color;
+    }
+
+    .message {
+      font-size: 2rem;
+      font-weight: 900;
+      display: block;
+      position: absolute;
+      bottom: 7rem;
+    }
+
+    .reset {
+      width: 7rem;
+      height: 2rem;
+      outline: none;
+      position: absolute;
+      bottom: 3rem;
+      font-family: $font-main;
+      font-size: 1.2rem;
+      border: none;
+      background-color: $button-bg-color;
+      
+      &:hover {
+        cursor: pointer;
+        background-color: $button-bg-hover-color;
+        color: $button-hover-color;
+      }
+    }
+  }
 }
 
-.root {
-  width: min(100%, 24rem);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 1%;
-  justify-content: center;
-  align-items: center;
-}
 
-.heading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
 
-.wrapper {
-  width: min(100%, 21rem);
-  height: min(100%, 22rem);
-  background-color: rgb(70, 63, 77);
-  display: flex;
-  flex-wrap: wrap;
-  padding: 1%;
-  margin-bottom: 1.5rem;
-  border: 2px solid black;
-  opacity: 0.7;
-}
 
-.cell {
-  width: min(100%, 7rem);
-  height: 7rem;
-  font-size: 4rem;
-  background-color: rgb(191, 180, 206);
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  width: 33.33%;
-  padding: 1%;
-  border: 2px solid black;
-  opacity: 0.7;
 
-}
+

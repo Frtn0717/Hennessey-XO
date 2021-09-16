@@ -1,4 +1,5 @@
-import { div, main } from './variables';
+import { div, main } from "./variables";
+
 
 export const makeField = () => {
   const wrap = main.appendChild(div);
@@ -12,8 +13,6 @@ export const makeField = () => {
     wrapper.append(cell);
    
     cell.classList.add('cell');
-    cell.classList.add(`cell-${i}`);
-
-    // cell.innerHTML = `X`;
+    cell.classList.add('cell-open');
   };
 };
