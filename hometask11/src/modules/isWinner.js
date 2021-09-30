@@ -1,121 +1,38 @@
 export const isWinner = () => {
   const cells = [...document.querySelectorAll('.cell')];
+  const winnerComb = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
 
-  if (
-     (
-      cells[0].classList.contains('cell-x') && 
-      cells[1].classList.contains('cell-x') &&
-      cells[2].classList.contains('cell-x')
-     )
-     ||     
-     (
-      cells[3].classList.contains('cell-x') &&
-      cells[4].classList.contains('cell-x') && 
-      cells[5].classList.contains('cell-x')
-     )
-     ||
-     (
-      cells[6].classList.contains('cell-x') &&
-      cells[7].classList.contains('cell-x') &&
-      cells[8].classList.contains('cell-x')
-     )
-     ||
-     (
-      cells[0].classList.contains('cell-x') &&
-      cells[3].classList.contains('cell-x') && 
-      cells[6].classList.contains('cell-x')
-     )
-     ||
-     (
-      cells[1].classList.contains('cell-x') && 
-      cells[4].classList.contains('cell-x') && 
-      cells[7].classList.contains('cell-x')
-     )
-     ||
-     (
-      cells[2].classList.contains('cell-x') && 
-      cells[5].classList.contains('cell-x') && 
-      cells[8].classList.contains('cell-x')
-     )
-     ||
-     (
-      cells[0].classList.contains('cell-x') &&
-      cells[4].classList.contains('cell-x') && 
-      cells[8].classList.contains('cell-x')
-     )
-     ||
-     (
-      cells[2].classList.contains('cell-x') &&
-      cells[4].classList.contains('cell-x') && 
-      cells[6].classList.contains('cell-x')
-     )
-  ) {
-    return 'X';
+  const x = winnerComb.some(arr => {
+    return arr.every(i => {
+      return cells[i].classList.contains('cell-x') === true;
+    })
+  });
+
+  const o = winnerComb.some(arr => {
+    return arr.every(i => {
+      return cells[i].classList.contains('cell-o') === true;
+    })
+  });
+
+  const draw = cells.every(cell => cell.classList.contains('cell-closed'));
+
+  if (x) {
+    return 'X'
+  } else if (o) {
+    return 'O'
   }
 
-  if (
-    (
-      cells[0].classList.contains('cell-o') && 
-      cells[1].classList.contains('cell-o') && 
-      cells[2].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[3].classList.contains('cell-o') && 
-      cells[4].classList.contains('cell-o') && 
-      cells[5].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[6].classList.contains('cell-o') && 
-      cells[7].classList.contains('cell-o') && 
-      cells[8].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[0].classList.contains('cell-o') && 
-      cells[3].classList.contains('cell-o') && 
-      cells[6].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[1].classList.contains('cell-o') && 
-      cells[4].classList.contains('cell-o') && 
-      cells[7].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[2].classList.contains('cell-o') && 
-      cells[5].classList.contains('cell-o') && 
-      cells[8].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[0].classList.contains('cell-o') && 
-      cells[4].classList.contains('cell-o') && 
-      cells[8].classList.contains('cell-o')
-    )
-    ||
-    (
-      cells[2].classList.contains('cell-o') && 
-      cells[4].classList.contains('cell-o') && 
-      cells[6].classList.contains('cell-o')
-    )
-  ) {
-    return 'O';
-  } 
-  
-  if (cells[0].classList.contains('cell-closed') &&
-      cells[1].classList.contains('cell-closed') &&
-      cells[2].classList.contains('cell-closed') &&
-      cells[3].classList.contains('cell-closed') &&
-      cells[4].classList.contains('cell-closed') &&
-      cells[5].classList.contains('cell-closed') &&
-      cells[6].classList.contains('cell-closed') &&
-      cells[7].classList.contains('cell-closed') &&
-      cells[7].classList.contains('cell-closed')
-  ) {
+  if (draw) {
     return 'draw';
-  }
+  };
 
 };
